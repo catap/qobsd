@@ -33,7 +33,8 @@ install: all
 	install -m 755 qobsd.rc "$(DESTDIR)$(RCDIR)/qobsd"
 	install -m 644 qobsd.login \
 	    "$(DESTDIR)$(LOCALBASE)/share/examples/login.conf.d/qobsd"
-	install -m 644 disklabel site.perms \
+	install -m 644 install.conf disklabel site.perms \
+	    qobsd_ed25519.pem qobsd_ed25519.pub \
 	    u-boot-octeon3-qobsd-boot.pflash u-boot-octeon3-qobsd-install.pflash \
 	    "$(DESTDIR)$(LOCALBASE)/share/examples/qobsd/"
 	install -m 644 site/install.site "$(DESTDIR)$(LOCALBASE)/share/examples/qobsd/site/"
