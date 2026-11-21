@@ -91,10 +91,8 @@ when QEMU exits.
 
 Running as a service
 
-For a source install, use the files in /usr/local/share/examples/qobsd.
-Install qobsd.rc as /etc/rc.d/qobsd and qobsd.login as
-/etc/login.conf.d/qobsd. The service defaults to user _vmd and directory
-/var/vm; that directory must exist and be writable by _vmd.
+The service defaults to user _vmd and directory /var/vm, which must
+exist and be writable by _vmd.
 
 The example login class uses datasize=20G: 16G for the default guest
 RAM, 1G for the shared TCG translation cache, and 3G for other QEMU
@@ -106,11 +104,13 @@ the guest architecture and disk. For Octeon, qobsd_octeon uses
 octeon.qcow2 and qobsd_octeon_2 uses octeon_2.qcow2. Octeon guests with
 writable pflash require separate working directories.
 
-Create an Octeon service instance:
+For a source install, copy the Octeon login class.
 
-    doas ln -s /etc/rc.d/qobsd /etc/rc.d/qobsd_octeon
-    doas cp /etc/login.conf.d/qobsd /etc/login.conf.d/qobsd_octeon
-    doas sed -i 's/^qobsd:/qobsd_octeon:/' /etc/login.conf.d/qobsd_octeon
+    doas cp /usr/local/share/examples/login.conf.d/qobsd_octeon \
+        /etc/login.conf.d/qobsd_octeon
+
+Enable the Octeon service.
+
     doas rcctl enable qobsd_octeon
 
 The login class entry must match the service name. The tmux socket uses

@@ -33,6 +33,11 @@ install: all
 	install -m 755 qobsd.rc "$(DESTDIR)$(RCDIR)/qobsd"
 	install -m 644 qobsd.login \
 	    "$(DESTDIR)$(LOCALBASE)/share/examples/login.conf.d/qobsd"
+.for arch in amd64 arm64 armv7 hppa i386 macppc octeon powerpc64 riscv64 sparc64
+	ln -sf qobsd "$(DESTDIR)$(RCDIR)/qobsd_${arch}"
+	sed "s/^qobsd:/qobsd_${arch}:/" qobsd.login \
+	    > "$(DESTDIR)$(LOCALBASE)/share/examples/login.conf.d/qobsd_${arch}"
+.endfor
 	install -m 644 install.conf disklabel site.perms \
 	    qobsd_ed25519.pem qobsd_ed25519.pub \
 	    u-boot-octeon3-qobsd-boot.pflash u-boot-octeon3-qobsd-install.pflash \
