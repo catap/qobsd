@@ -67,7 +67,9 @@ Boot the interactive installer.
 Dry run, printing QEMU or conversion commands.
 Snapshot media lookup may contact the mirror.
 .It Fl p Ar port
-Forward a host TCP port on all IPv4 interfaces to guest SSH.
+Forward a host TCP port on
+.Li 127.0.0.1
+to guest SSH.
 .It Fl R Ar version
 Use an OpenBSD release.
 .It Fl s

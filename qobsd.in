@@ -557,7 +557,7 @@ set_netdev() {
 	net_user="user,host=$host_addr,hostname=$vm_hostname,domainname=$vm_domain"
 
 	if [ -n "$ssh_port" ]; then
-		net_user="$net_user,hostfwd=::${ssh_port}-:22"
+		net_user="$net_user,hostfwd=tcp:127.0.0.1:${ssh_port}-:22"
 	fi
 
 	if [ -n "$tftproot" ]; then

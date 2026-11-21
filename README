@@ -48,8 +48,8 @@ Use -k to bypass signature verification on the host.
 Use -H hostname[.domain] to override qobsd-<arch>.<host hostname>.
 A short name uses the host's hostname as its domain.
 
-Use -p port in normal run mode to forward a host port to the guest's SSH
-port; no host SSH port forwarding is bound by default.
+Use -p port in normal run mode to forward 127.0.0.1:port to the
+guest's SSH port. SSH forwarding is disabled by default.
 
 Use -f image before <arch> to select the qcow2 disk in any mode;
 the default is <arch>.qcow2 in working directory.
