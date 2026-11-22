@@ -6,7 +6,7 @@ daemon_user="_vmd"
 
 instance=${0##*/}
 instance=${instance#qobsd_}
-daemon_flags="-f ${instance}.qcow2 ${instance%%_*}"
+daemon_flags="-f ${instance}.qcow2 -H qobsd-$(echo "$instance" | tr _ -) ${instance%%_*}"
 
 . /etc/rc.d/rc.subr
 
